@@ -12,11 +12,11 @@ public class MyDate {
 		this.day = day;
 		this.month = month;
 		this.year = year;
-		this.leapYear = this.isLeapYear();
-		this.lastDay = this.lastDayOfMonth();
+		this.leapYear = this.setLeapYear();
+		this.lastDay = this.setLastDay();
 	}
 	
-	public boolean	isLeapYear() {
+	private boolean	setLeapYear() {
 		boolean isLeapYear = false;
 		
 		if (this.year > 0 && this.year % 4 == 0) {
@@ -28,7 +28,7 @@ public class MyDate {
 		return isLeapYear;
 	}
 	
-	public int	lastDayOfMonth() {
+	private int	setLastDay() {
 		int[]	day31 = {1, 3, 5, 7, 8, 10, 12};
 		
 		if (this.month ==2) {
