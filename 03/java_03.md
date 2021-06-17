@@ -1,6 +1,7 @@
 # 3회차
 
 ## 목차
+0. [Mydate 구현](#0.-Mydate-구현-;-입력값이-유효한-날짜인지-판단하기)
 1. [참조형 변수](#1.-참조형-변수)
 2. [this의 활용](#2.-this의-활용)
 3. [static의 의미](#3.-static의-의미)
@@ -10,17 +11,276 @@
 
 <br>
 
+### 0. Mydate 구현 ; 입력값이 유효한 날짜인지 판단하기
+
+- `MyDate.java`
+
+	```java
+	package date;
+
+	public class MyDate {
+		
+		int	day;
+		int	month;
+		int	year;
+		boolean	leapYear;
+		int	lastDay;
+
+		public	MyDate(int day, int month, int year) {
+			this.day = day;
+			this.month = month;
+			this.year = year;
+			this.leapYear = this.setLeapYear();
+			this.lastDay = this.setLastDay();
+		}
+		
+		private boolean	setLeapYear() {
+			boolean isLeapYear = false;
+			
+			if (this.year > 0 && this.year % 4 == 0) {
+				isLeapYear = true;
+				if (this.year % 100 == 0 && this.year % 400 != 0) {
+					isLeapYear = false;
+				}
+			}
+			return isLeapYear;
+		}
+		
+		private int	setLastDay() {
+			int[]	day31 = {1, 3, 5, 7, 8, 10, 12};
+			
+			if (this.month ==2) {
+				if (this.leapYear == true) {
+					return 29;
+				}
+				return 28;
+			}
+			for(int i = 0; i < 7; i++) {
+				if (this.month == day31[i])
+					return 31;
+			}
+			return 30;
+		}
+		
+		public String	isValid() {
+			int	valid = 1;
+			
+			if (this.year < 1) {
+				valid = 0;
+			}
+			if (this.month < 1 || this.month > 12) {
+				valid = 0;
+			}
+			if (this.day < 1 || this.day > this.lastDay) {
+				valid = 0;
+			}
+			if (valid == 0) {
+				return("유효하지 않은 날짜입니다.");
+			}
+			else {
+				return("유효한 날짜입니다.");
+			}
+		}
+
+	}
+	```   
+	<br>
+
+- `MyDateTest.java`
+
+	```java
+	package date;
+
+	public class MyDateTest {
+
+		public static void main(String[] args) {
+			
+			MyDate date1 = new MyDate(30, 2, 2000);
+			System.out.println(date1.isValid());
+			MyDate date2 = new MyDate(2, 10, 2006);
+			System.out.println(date2.isValid());
+
+		}
+	}
+	```   
+
+<br>
+
+- 출력결과
+	```
+	유효하지 않은 날짜입니다.
+	유효한 날짜입니다.
+	```   
+
+<br>
+
 ### 1. 참조형 변수
 - 변수에는 크기가 정해진 기본 자료형(`int`, `double`, `boolean`, `char` 등)으로 선언하는 변수가 있고, 클래스 자료형(`String` 등)으로 선언하는 참조 자료형 변수가 있다.
 
 <br>
 
 ### 2. this의 활용
-- `this` : 생성된 인스턴스 스스로를 가리키는 예약어
+* `this` : 생성된 인스턴스 스스로를 가리키는 예약어
 
 1. 자신의 메모리를 가르키는 `this`
+
+	- `Birth.java`
+		```java
+		package thistest;
+
+		import	date.MyDate;
+
+		public class Birth {
+			String	name;
+			MyDate	birthDay;
+			
+			public Birth(String name) {
+				this.name = name;
+			}
+			
+			public void	printThis() {
+				System.out.println(this);
+			}
+			
+			public void	printName() {
+				System.out.println("name : " + name);
+				System.out.println("this.name : " + this.name);
+			}
+		}
+		```   
+
+	- `ThisTest.java`
+		```java
+		package thistest;
+
+		public class ThisTest {
+
+			public static void main(String[] args) {
+				
+				Birth	birthDay = new Birth("jwoo");
+				
+				System.out.println(birthDay);
+				birthDay.printThis();
+				System.out.println(birthDay.name);
+				birthDay.printName();
+			}
+		}
+		```   
+
+	- 출력 결과
+		```
+		thistest.Birth@41975e01
+		thistest.Birth@41975e01
+		jwoo
+		name : jwoo
+		this.name : jwoo
+		```   
+	
+	클래스 내에 `this`를 출력해주는 함수를 만들어둔다. `main()` 안에서 생성자로 새로운 인스턴스를 생성하고, 그 인스턴스를 가르키는 참조변수 `birthday`를 출력한 값과 `printThis()` 메서드를 통해 출력된 값은 동일하다. 그리고 `printName()` 을 통해 인스턴수 변수 `name`과 `this.name` 출력값 또한 동일하며, `this.name` 은 `birthday.name` 와 같은 의미임을 확인해볼 수 있다.
+
+<br>
+
 2. 생성자에서 다른 생성자를 호출하는 `this`
+
+	- `Birth.java`
+		```java
+		package thistest;
+
+		import	date.MyDate;
+
+		public class Birth {
+			String	name;
+			MyDate	birthDay;
+			
+			public Birth() {
+				this("jwoo");
+			}
+			
+			public Birth(String name) {
+				this.name = name;
+			}
+			
+			public Birth(String name, MyDate birthDay) {
+				this.name = name;
+				this.birthDay = birthDay;
+			}
+		}
+		```   
+
+	- `ThisTest.java`
+		```java
+		package thistest;
+
+		public class ThisTest {
+
+			public static void main(String[] args) {
+				
+				Birth	birthDay1 = new Birth();
+				Birth	birthDay2 = new Birth("jiwon");
+				
+				System.out.println(birthDay1.name);
+				System.out.println(birthDay2.name);
+			}
+		}
+		```   
+	
+	- 출력 결과
+		```
+		jwoo
+		jiwon
+		```   
+
+	생성자가 여러개인 상황에서는 `this()`을 사용하여 다른 생성자를 호출할 수 있다. 위와 같은 경우 `this("jwoo")` 를 사용하면,`Birth(String name)`를 호출한 것이다.
+
+<br>
+
 3. 자신의 주소를 반환하는 `this`
+
+	- `Birth.java`
+		```java
+		package thistest;
+
+		import	date.MyDate;
+
+		public class Birth {
+			String	name;
+			MyDate	birthDay;
+			
+			public Birth returnThis() {
+				return(this);
+			}
+			
+			public void printThis() {
+				System.out.println(this);
+			}
+		}
+		```   
+
+	- `ThisTest.java`
+		```java
+		package thistest;
+
+		public class ThisTest {
+
+			public static void main(String[] args) {
+				
+				Birth birthDay = new Birth();
+				
+				System.out.println(birthDay);
+				System.out.println(birthDay.returnThis());
+				birthDay.printThis();
+			}
+		}
+		```   
+
+	- 출력 결과
+		```
+		thisTest.Birth@c2e1f26
+		thisTest.Birth@c2e1f26
+		thisTest.Birth@c2e1f26
+		```   
+	
+	클래스 내에 `this`를 반환하는 함수와 출력해주는 함수를 만들어둔다. `main` 안에서 생성자로 새로운 인스턴스를 생성하고, 그 인스턴스를 가르키는 참조변수 `birthday`와 `this`를 반환해주는 `returnThis`의 리턴값을 출력해서 비교해보면 동일한 값이 출력되는 것을 알 수 있다. 메서드 내에서 `this`를 출력하는 `printThis` 함수 또한 같은 메모리 주소를 출력한다. `this` 가 생성된 인스턴스의 자신을 가리킨다는 것을 확인해볼 수 있다.
 
 <br>
 
