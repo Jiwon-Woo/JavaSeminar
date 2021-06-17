@@ -115,7 +115,66 @@
 <br>
 
 ### 1. 참조형 변수
-- 변수에는 크기가 정해진 기본 자료형(`int`, `double`, `boolean`, `char` 등)으로 선언하는 변수가 있고, 클래스 자료형(`String` 등)으로 선언하는 참조 자료형 변수가 있다.
+- 변수에는 크기가 정해진 기본 자료형(`int`, `double`, `boolean`, `char` 등)으로 선언하는 변수가 있고, 클래스 자료형(`String`, 직접 만든 클래스 등)으로 선언하는 참조 자료형 변수가 있다.
+- 기본 자료형 변수에는 자료형에 맞는 실제 값이 저장된다. 예를 들어 `int i = 10;`로 선언된 변수 `i`가 있다면 `int`형의 크기인 4바이트의 공간이 할당되고, 그 공간에 정수 `10`이 저장되는 것이다.
+- 하지만 참조형 변수는 이와 달리 주소값이 저장된다. 예를 들어 `Person jwoo = new Person();`처럼 클래스 Person 자료형 변수가 있다면, 이 변수에는 인스턴스의 주소값이 저장된다. 그래서 변수를 출력해보면 메모리 주소가 나오는 것을 알 수 있다.
+
+- `BirthDay.java`
+
+	```java
+	package person;
+
+	public class BirthDay {
+		int	day;
+		int	month;
+		int	year;
+	}
+	```   
+
+- `Person.java`
+
+	```java
+	package person;
+
+	public class Person {
+		String	name;
+		int		id;
+		BirthDay	birthDay = new BirthDay();
+	}
+	```   
+
+- `PersonTest.java`
+	```java
+	package person;
+
+	public class PersonTest {
+
+		public static void main(String[] args) {
+			Person jwoo = new Person();
+			
+			jwoo.name = "jwoo";
+			jwoo.id = 20175966;
+			jwoo.birthDay.day = 7;
+			jwoo.birthDay.month = 6;
+			jwoo.birthDay.year = 1997;
+			
+			System.out.println(jwoo);
+			System.out.println(jwoo.name);
+			System.out.println(jwoo.id);
+			System.out.println(jwoo.birthDay.day + "/" + jwoo.birthDay.month + "/" + jwoo.birthDay.year);
+		}
+	}
+	```   
+
+- 출력 결과
+	```
+	person.Person@c2e1f26
+	jwoo
+	20175966
+	7/6/1997
+	```   
+
+
 
 <br>
 
@@ -230,7 +289,7 @@
 		jiwon
 		```   
 
-	생성자가 여러개인 상황에서는 `this()`을 사용하여 다른 생성자를 호출할 수 있다. 위와 같은 경우 `this("jwoo")` 를 사용하면,`Birth(String name)`를 호출한 것이다.
+	생성자가 여러개인 상황에서는 `this()`을 사용하여 다른 생성자를 호출할 수 있다. 위와 같은 경우 `this("jwoo")` 를 사용하면, `Birth(String name)`를 호출한 것이다.
 
 <br>
 
