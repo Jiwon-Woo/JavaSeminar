@@ -84,7 +84,6 @@
 
 	}
 	```   
-	<br>
 
 - `MyDateTest.java`
 
@@ -107,6 +106,7 @@
 <br>
 
 - 출력결과
+
 	```
 	유효하지 않은 날짜입니다.
 	유효한 날짜입니다.
@@ -144,6 +144,7 @@
 	```   
 
 - `PersonTest.java`
+
 	```java
 	package person;
 
@@ -167,6 +168,7 @@
 	```   
 
 - 출력 결과
+
 	```
 	person.Person@c2e1f26
 	jwoo
@@ -184,6 +186,7 @@
 1. 자신의 메모리를 가르키는 `this`
 
 	- `Birth.java`
+
 		```java
 		package thistest;
 
@@ -209,6 +212,7 @@
 		```   
 
 	- `ThisTest.java`
+
 		```java
 		package thistest;
 
@@ -227,6 +231,7 @@
 		```   
 
 	- 출력 결과
+
 		```
 		thistest.Birth@41975e01
 		thistest.Birth@41975e01
@@ -242,6 +247,7 @@
 2. 생성자에서 다른 생성자를 호출하는 `this`
 
 	- `Birth.java`
+
 		```java
 		package thistest;
 
@@ -267,6 +273,7 @@
 		```   
 
 	- `ThisTest.java`
+
 		```java
 		package thistest;
 
@@ -284,6 +291,7 @@
 		```   
 	
 	- 출력 결과
+
 		```
 		jwoo
 		jiwon
@@ -296,6 +304,7 @@
 3. 자신의 주소를 반환하는 `this`
 
 	- `Birth.java`
+
 		```java
 		package thistest;
 
@@ -316,6 +325,7 @@
 		```   
 
 	- `ThisTest.java`
+
 		```java
 		package thistest;
 
@@ -333,6 +343,7 @@
 		```   
 
 	- 출력 결과
+
 		```
 		thisTest.Birth@c2e1f26
 		thisTest.Birth@c2e1f26
@@ -370,6 +381,7 @@
 - 싱글톤 패턴은 프로그램에서 인스턴스를 딱 하나만 구현하는 디자인 패텬이다. 이전에 공부한 접근제어자와 static을 활용하여 싱글톤 패턴을 구현할 수 있다.
 
 - `SingleTone.java`
+
 	```java
 	package constructor;
 
@@ -385,9 +397,11 @@
 		}
 	}
 	```   
+
 	우선, 생성자를 private으로 선언한다. private이므로 이 생성자는 클래스 내에서만 활용할 수 있다. 즉 외부에서는 생성자를 통해 새로운 인스턴스를 만들 수 없는 것이다. 그러므로 클래스 내에서 인스턴스를 생성하고, 이 인스턴스를 클래스 변수가 가리키게 한다. 그러면 이 인스턴스는 프로그램 내에서 SingleTone 클래스의 유일한 인스턴스가 된다.
 
 - `ConstructorTest.java`
+
 	```java
 	package constructor;
 
@@ -404,6 +418,7 @@
 		}
 	}
 	```   
+
 	외부 클래스에서는 SingleTone 클래스의 인스턴스를 생성할 수 없으므로, public으로 선언한 `getInstance()` 함수를 통해 인스턴스의 메모리 주소를 확인해본다. `single1`과 `single2`에 모두 같은 메모리 주소가 저장되어있음을 알 수 있다. 즉, SingleTone 클래스의 인스턴스는 유일하다.
 
 <br>
@@ -413,6 +428,7 @@
 - 학생이 스타벅스에 가서 커피를 사먹는다면?
 
 - `Starbucks.java`
+
 	```java
 	package cooperation;
 
@@ -496,6 +512,7 @@
 	```   
 
 - `Student.java`
+
 	```java
 	package cooperation;
 
@@ -545,6 +562,7 @@
 	```   
 
 - `CooperationTest.java`
+
 	```java
 	package cooperation;
 
