@@ -417,15 +417,15 @@
 	}
 	```   
 
-	외부 클래스에서는 SingleTone 클래스의 인스턴스를 생성할 수 없으므로, public으로 선언한 `getInstance()` 함수를 통해 인스턴스의 메모리 주소를 확인해본다. `single1`과 `single2`에 모두 같은 메모리 주소가 저장되어있음을 알 수 있다. 즉, SingleTone 클래스의 인스턴스는 유일하다.
-
 - 출력 결과
 	```
 	constructor.SingleTone@1ee0005
 	constructor.SingleTone@1ee0005
 	true
 	true
-	```
+	```   
+
+외부 클래스에서는 SingleTone 클래스의 인스턴스를 생성할 수 없으므로, public으로 선언한 `getInstance()` 함수를 통해 인스턴스의 메모리 주소를 확인해본다. `single1`과 `single2`에 모두 같은 메모리 주소가 저장되어있음을 알 수 있다. 즉, SingleTone 클래스의 인스턴스는 유일하다.
 
 <br>
 
