@@ -409,5 +409,208 @@
 <br>
 
 ### 6. 객체간의 협력
-- 코드 구현해보기
 
+- 학생이 스타벅스에 가서 커피를 사먹는다면?
+
+- `Starbucks.java`
+	```java
+	package cooperation;
+
+	public class Starbucks {
+		static int	storeNumber;
+		String	storeName;
+		int orderNumber;
+		int	money;
+		int coffeeBean;
+		boolean	open;
+		
+		public	Starbucks (String name) {
+			storeNumber++;
+			this.storeName = name.concat(Integer.toString(storeNumber));
+			this.orderNumber = 0;
+			this.money = 1000000;
+			this.coffeeBean = 100;
+			this.open = true;
+		}
+		
+		public int	howMuch(int cup) {
+			if (cup <= 0)
+			{
+				System.out.println("커피는 1잔 이상만 주문할 수 있습니다.");
+				return -1;
+			}
+			if (this.coffeeBean == 0)
+			{
+				System.out.println("재료가 다 소진되었습니다.");
+				return 0;
+			}
+			if (this.coffeeBean < cup)
+			{
+				System.out.println("주문하신 양보다 재료가 부족합니다.");
+				return -1;
+			}
+			System.out.println("주문하신 커피 " + cup + "잔은 총 " + 4100 * cup + "원 입니다.");
+			return 4100 * cup;
+		}
+		
+		public int	makeCoffee(int cup) {
+			this.orderNumber++;
+			this.coffeeBean -= cup;
+			this.money += 4100 * cup;
+			System.out.println("주문번호 "+ this.orderNumber + "님 주문하신 커피 " + cup + "잔이 제조되었습니다!");
+			return this.orderNumber;
+		}
+		
+		public void	orderCoffeeBean(int order) {
+			if (order <= 0)
+			{
+				System.out.println("커피 원두는 하나 이상만 주문할 수 있습니다.");
+				return;
+			}
+			if (this.money < 500 * order)
+			{
+				System.out.println("스타벅스의 예산이 부족합니다.");
+				return;
+			}
+			this.coffeeBean += order;
+			this.money -= 500 * order;
+			System.out.println("커피 원두 " + order + " 개를 주문 완료하였습니다.");
+		}
+		
+		public boolean	isOpen() {
+			if (this.open == true) {
+				System.out.println(this.storeName + " 스타벅스가 영업 중입니다.");
+			}
+			else {
+				System.out.println(this.storeName + " 스타벅스가 영업이 종료되었습니다.");
+			}
+			return this.open;
+		}
+		
+		public void	showInfo() {
+			this.isOpen();
+			System.out.println(this.storeName + " 스타벅스의 잔고는 " + this.money + "원, 커피 원두 재고는 " + this.coffeeBean + "개 남았습니다.");
+		}
+
+	}
+	```   
+
+- `Student.java`
+	```java
+	package cooperation;
+
+	public class Student {
+		public String	studentName;
+		public int	money;
+		public int	lastOrderNumber;
+		public int	drinkCoffee;
+		
+		public Student(String studentName, int money) {
+			this.studentName = studentName;
+			this.money = money;
+			this.lastOrderNumber = 0;
+		}
+		
+		public void buyStarbucks(Starbucks starbucks, int cup) {
+			int	price;
+			
+			if (starbucks.isOpen() == false) {
+				System.out.println("커피를 살 수 없습니다.");
+				return;
+			}
+			price = starbucks.howMuch(cup);
+			if (price == -1) {
+				System.out.println("다시 주문해주세요.");
+				return;
+			}
+			if (price == 0) {
+				System.out.println("다음에 다시 방문해주세요.");
+				return;
+			}
+			if (this.money < price) {
+				System.out.println("잔액이 부족합니다.");
+				return;
+			}
+			this.drinkCoffee += cup;
+			this.money -= price;
+			this.lastOrderNumber = starbucks.makeCoffee(cup);
+		}
+		
+		public void	showInfo() {
+			System.out.println("현재 " + this.studentName + "이(가) 가지고 있는 금액은 " + this.money + "원 입니다.");
+			System.out.println("현재 " + this.studentName + "은(는) 커피를 " + this.drinkCoffee + "잔 마셨습니다.");
+		}
+
+	}
+	```   
+
+- `CooperationTest.java`
+	```java
+	package cooperation;
+
+	public class CooperationTest {
+
+		public static void main(String[] args) {
+			Starbucks GaepoStarbucks = new Starbucks("Gaepo");
+			Starbucks SeochoStarbucks = new Starbucks("Seocho");
+			Student jwoo = new Student("jwoo", 20000);
+			
+			jwoo.buyStarbucks(SeochoStarbucks, 1);
+			jwoo.showInfo();
+			System.out.println();
+			jwoo.buyStarbucks(GaepoStarbucks, 2);
+			jwoo.showInfo();
+			System.out.println();
+			jwoo.buyStarbucks(GaepoStarbucks, 2);
+			jwoo.showInfo();
+			System.out.println();
+			jwoo.buyStarbucks(SeochoStarbucks, 1);
+			jwoo.showInfo();
+			System.out.println();
+			jwoo.buyStarbucks(SeochoStarbucks, 1);
+			jwoo.showInfo();
+			System.out.println();
+			GaepoStarbucks.showInfo();
+			SeochoStarbucks.showInfo();
+		}
+
+	}
+	```   
+
+- 출력 결과
+	```
+	Seocho2 스타벅스가 영업 중입니다.
+	주문하신 커피 1잔은 총 4100원 입니다.
+	주문번호 1님 주문하신 커피 1잔이 제조되었습니다!
+	현재 jwoo이(가) 가지고 있는 금액은 15900원 입니다.
+	현재 jwoo은(는) 커피를 1잔 마셨습니다.
+
+	Gaepo1 스타벅스가 영업 중입니다.
+	주문하신 커피 2잔은 총 8200원 입니다.
+	주문번호 1님 주문하신 커피 2잔이 제조되었습니다!
+	현재 jwoo이(가) 가지고 있는 금액은 7700원 입니다.
+	현재 jwoo은(는) 커피를 3잔 마셨습니다.
+
+	Gaepo1 스타벅스가 영업 중입니다.
+	주문하신 커피 2잔은 총 8200원 입니다.
+	잔액이 부족합니다.
+	현재 jwoo이(가) 가지고 있는 금액은 7700원 입니다.
+	현재 jwoo은(는) 커피를 3잔 마셨습니다.
+
+	Seocho2 스타벅스가 영업 중입니다.
+	주문하신 커피 1잔은 총 4100원 입니다.
+	주문번호 2님 주문하신 커피 1잔이 제조되었습니다!
+	현재 jwoo이(가) 가지고 있는 금액은 3600원 입니다.
+	현재 jwoo은(는) 커피를 4잔 마셨습니다.
+
+	Seocho2 스타벅스가 영업 중입니다.
+	주문하신 커피 1잔은 총 4100원 입니다.
+	잔액이 부족합니다.
+	현재 jwoo이(가) 가지고 있는 금액은 3600원 입니다.
+	현재 jwoo은(는) 커피를 4잔 마셨습니다.
+
+	Gaepo1 스타벅스가 영업 중입니다.
+	Gaepo1 스타벅스의 잔고는 1008200원, 커피 원두 재고는 98개 남았습니다.
+	Seocho2 스타벅스가 영업 중입니다.
+	Seocho2 스타벅스의 잔고는 1008200원, 커피 원두 재고는 98개 남았습니다.
+	```   
