@@ -11,7 +11,7 @@
 
 ### 1. 배열
 
-![배열의 형태와 필요성](https://player.slidesplayer.org/60/11187470/slides/slide_22.jpg)
+<img src="https://player.slidesplayer.org/60/11187470/slides/slide_22.jpg" width="50%" height="50%">
 
 - 자료형이 같은 자료가 연속으로 나열된 자료구조.
 - 배열을 이루고 있는 자료들을 배열의 요소라고 한다.
