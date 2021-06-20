@@ -21,11 +21,10 @@
 
 #### 1.1 배열의 생성
 
-- 배열은 하나의 클래스로, `new`를 활용하여 배열 객체를 생성.
-- `studentMath` 과 같은 배열 변수에 배열 인스턴스의 주소값이 담긴다.
-- 배열 객체를 생성하지 않고 배열 변수만 선언 하게 되면, 배열 변수는 `null` 값을 가지게 된다.
+- 배열은 하나의 클래스로, `new`를 활용하여 배열 객체를 생성할 수 있고, 배열 변수에 배열 인스턴스의 주소값이 담긴다.
 - 다른 클래스처럼 배열 객체 또한 배열 클래스 내에 있는 속성과 메서드를 활용할 수 있다.
-	<img src="https://player.slidesplayer.org/60/11187470/slides/slide_24.jpg" width="50%" height="50%">
+- 배열 객체를 생성하지 않고 배열 변수만 선언 하게 되면, 배열 변수는 `null` 값을 가지게 된다.
+<img src="https://player.slidesplayer.org/60/11187470/slides/slide_30.jpg" width="50%" height="50%"><img src="https://player.slidesplayer.org/60/11187470/slides/slide_24.jpg" width="50%" height="50%">
 
 <br>
 
