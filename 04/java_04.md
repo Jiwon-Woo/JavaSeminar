@@ -171,6 +171,7 @@ for (int i = 0; i < 5; i++)
 <br>
 
 - 출력 결과
+
 	```
 	[Larray.Student;@41975e01
 	array.Student@1ee0005, gyeon
