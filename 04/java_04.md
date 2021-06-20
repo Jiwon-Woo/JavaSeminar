@@ -206,6 +206,8 @@ for (int i = 0; i < 5; i++)
 	|`destPos`|복사해서 대상 배열에 붙여 넣기를 시작할 인덱스 위치|
 	|`length`|`src`에서 `dest`로 복사할 요소의 개수|
 
+<br>
+
 - `System.arraycopy()` 사용 예제
 
 	- `ArrayTest.java`
