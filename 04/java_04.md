@@ -57,7 +57,11 @@ for (int i = 0; i < 100; i++)
 
 #### 1.2 배열의 선언 및 초기화
 
-- 초기값을 설정해주지 않고 배열 선언 하기
+배열은 하나의 클래스로, `new`를 활용하여 배열 객체를 생성하면 배열 변수에 배열 인스턴스의 주소값이 담깁니다. 만약 `new`를 사용하지 않고 배열 변수를 선언만 하게 되면, 배열 변수에는 `null` 값을 가지게 됩니다. 다른 클래스처럼 배열 객체 또한 배열 클래스 내에 있는 속성과 메서드를 활용할 수 있습니다.
+
+<br>
+
+- 초기값을 설정해주지 않고 배열 생성 하기
 
 ```java
 int[]	math = new int[5];
@@ -102,8 +106,94 @@ for (int i = 0; i < 5; i++)
 
 ### 2. 객체 배열
 
+객체 배열은 배열의 요소가 객체인 배열입니다. 기본 자료형 배열 요소에는 그 자료형에 해당하는 실제 값이 담기지만 객체 배열에는 생성된 인스턴스의 주소가 담깁니다. 이로 인해 객체 배열은 기본 자료형 배열과 사용법도 약간 다릅니다.
+
 <br>
 
+#### 2.1 객체 배열 사용하기
+
+- `Student.java`
+
+	```java
+	package array;
+
+	public class Student {
+		
+		private	String	id;
+		
+		public Student(String id) {
+			this.id = id;
+		}
+		
+		public String	getStudentID() {
+			return this.id;
+		}
+	}
+	```   
+
+<br>
+
+- 객체 배열 선언하기
+
+	```java
+	Student[] cadet = new Student[5];
+	```   
+
+	클래스 명과 `[]`을 사용하여 객체 배열을 선언합니다. 이때 `new`를 사용하지만, 인스턴스가 생성되는 게 아니라 인스턴스의 메모리 주소가 담길 공간이 `[]`안의 개수 만큼 만들어집니다. 배열의 요소는 모두 `null`로 초기화 되어있습니다. 인스턴스를 생성하여 그 메모리 주소를 배열의 요소에 담아주는 방식으로 사용합니다.
+
+<br>
+
+- 객체 배열에 인스턴스를 생성하고 저장하기
+
+	```java
+	cadet[0] = new Student("gyeon");
+	cadet[1] = new Student("jwoo");
+	cadet[2] = new Student("seuhan");
+	cadet[3] = new Student("sjin");
+	cadet[4] = new Student("sushin");
+	```   
+
+<br>
+
+- `ArrayTest.java`
+
+	```java
+	package array;
+
+	public class ArrayTest {
+
+		public static void main(String[] args) {
+			
+			Student[] cadet = new Student[5];
+			
+			cadet[0] = new Student("gyeon");
+			cadet[1] = new Student("jwoo");
+			cadet[2] = new Student("seuhan");
+			cadet[3] = new Student("sjin");
+			cadet[4] = new Student("sushin");
+			
+			System.out.println(cadet);
+			
+			for (int i = 0; i < cadet.length; i++) {
+				System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+			}
+		}
+	}
+	```   
+
+<br>
+
+- 출력 결과
+	```
+	[Larray.Student;@41975e01
+	array.Student@1ee0005, gyeon
+	array.Student@75a1cd57, jwoo
+	array.Student@3d012ddd, seuhan
+	array.Student@6f2b958e, sjin
+	array.Student@1eb44e46, sushin
+	```   
+
+<br>
 
 ### 3. 배열의 복사
 
