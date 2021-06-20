@@ -87,8 +87,8 @@ for (int i = 0; i < 5; i++)
 - 배열의 요소가 객체인 배열로, 기본 자료형 배열과 사용법이 약간 다르다.
 - 기본 자료형 배열 요소에는 그 자료형에 해당하는 실제 값이 담기지만 객체 배열에는 생성된 인스턴스의 주소가 담긴다.
 - 기본 자료형 배열(위)과 객체 배열(아래)의 차이
-<img src="https://resources.codeonweb.com/bucket/cached/72/d5/72d54e7bc14f44296675d610d8ead80d@2x.png" width="70%" height="70%">
-<img src="https://resources.codeonweb.com/bucket/cached/ca/cb/cacbe097dac93685cf7e25183b234643@2x.png" width="70%" height="70%">
+<img src="https://resources.codeonweb.com/bucket/cached/72/d5/72d54e7bc14f44296675d610d8ead80d@2x.png" width="60%" height="60%">
+<img src="https://resources.codeonweb.com/bucket/cached/ca/cb/cacbe097dac93685cf7e25183b234643@2x.png" width="60%" height="60%">
 
 <br>
 
