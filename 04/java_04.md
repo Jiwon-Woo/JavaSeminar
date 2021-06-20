@@ -109,6 +109,10 @@ for (int i = 0; i < 5; i++)
 		public String	getStudentID() {
 			return this.id;
 		}
+
+		public void	setStudentID(String id) {
+			this.id = id;
+		}
 	}
 	```   
 
@@ -248,7 +252,9 @@ for (int i = 0; i < 5; i++)
 ### 3.2 객체 배열의 복사
 
 - 기본 자료형 배열과 마찬가지로 객체 배열 또한 `System.arraycopy()` 메서드로 배열 요소를 복사할 수 있다.
-- 다만 객체 배열의 요소는 객체의 메모리 주소이므로, 기본 자료형 배열처럼 실제 자료값이 복사되는게 아니라 객체의 메로리 주소가 복사된다.
+- 다만 객체 배열의 요소는 객체의 메모리 주소이므로, 기본 자료형 배열처럼 실제 자료값이 복사되는게 아니라 객체의 메모리 주소가 복사된다.
+- 즉, `src`와 `dest`의 각 배열요소가 같은 객체를 참조하게 되는 것이다.
+- 그렇기 때문에 `dest` 배열은 `src` 배열처럼 배열 요소마다 객체를 생성해 넣지 않아도 오류없이 복사가 가능하다.
 - 객체 배열을 `System.arraycopy()` 메서드로 복사해보기
 	- `ArrayTest.java`
 
@@ -316,6 +322,87 @@ for (int i = 0; i < 5; i++)
 <br>
 
 ### 3.3 얕은 복사
+
+- `System.arraycopy()` 메서드를 사용했을 때와 같이, 객체의 메모리 주소걊만 복사하는 것을 얕은 복사라고 한다.
+- 얕은 복사를 할 경우, `src`와 `dest`가 모두 같은 객체를 참조하고 있기 때문에, 배열의 객체 값이 변경되면 두 배열 모두 영향을 받게 된다.
+- 얕은 복사 예제
+	- `ArrayTest.java`
+
+		```java
+		package array;
+
+		public class ArrayTest {
+
+			public static void main(String[] args) {
+				
+				Student[] cadet = new Student[5];
+				Student[] student = new Student[5];
+				
+				cadet[0] = new Student("gyeon");
+				cadet[1] = new Student("jwoo");
+				cadet[2] = new Student("seuhan");
+				cadet[3] = new Student("sjin");
+				cadet[4] = new Student("sushin");
+				
+				System.arraycopy(cadet, 0, student, 0, 5);
+				
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+				}
+				System.out.println();
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(student[i] + ", " + student[i].getStudentID());
+				}
+				
+				cadet[1].setStudentID("Woo Jiwon");
+				System.out.println();
+				
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+				}
+				System.out.println();
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(student[i] + ", " + student[i].getStudentID());
+				}
+			}
+		}
+		```   
+	
+	- 출력 결과
+
+		```
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, jwoo
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, jwoo
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, Woo Jiwon
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, Woo Jiwon
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+		```   
+
+- 얕은 복사를 표현한 그림
+	- 배열요소 변경 전   
+	<img src="https://user-images.githubusercontent.com/74581396/122684520-c0d73000-d240-11eb-8202-a972c6bf67da.png" width="60%" height="60%">
+
+	- 배열요소 변경 후   
+	<img src="https://user-images.githubusercontent.com/74581396/122684525-c46ab700-d240-11eb-9c10-0155a574d582.png" width="60%" height="60%">
+	
 
 <br>
 
