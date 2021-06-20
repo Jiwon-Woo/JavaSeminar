@@ -452,18 +452,15 @@ for (int i = 0; i < 5; i++)
 					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
 				}
 				System.out.println();
-				for (int i = 0; i < cadet.length; i++) {
+				for (int i = 0; i < student.length; i++) {
 					System.out.println(student[i] + ", " + student[i].getStudentID());
 				}
-				
 				
 				for (int i = 0; i < student.length; i++) {
 					student[i].setStudentID(cadet[i].getStudentID());
 				}
-				
 				System.out.println();
 				
-
 				for (int i = 0; i < cadet.length; i++) {
 					System.out.println(student[i] + ", " + student[i].getStudentID());
 				}
