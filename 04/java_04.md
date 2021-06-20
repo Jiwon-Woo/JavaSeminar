@@ -35,7 +35,7 @@
 
 ### 1.2 배열의 선언 및 초기화
 
-- 초기값을 설정해주지 않고 배열 생성 하기
+- 초기값을 설정해주지 않고 배열 선언 하기
 
 	```java
 	int[]	math = new int[5];
@@ -47,7 +47,7 @@
 
 <br>
 
-- 생성과 동시에 초기값을 설정해주기
+- 선언과 동시에 초기값을 설정해주기
 
 	```java
 	int[]	math = new int[] {78, 46, 98, 22, 100};
@@ -65,16 +65,17 @@
 - 배열은 `[]`을 통해 배열의 요소에 접근할 수 있다.
 - `math[i]` 는 `math` 라는 배열의 `i` 번째 요소라는 뜻이다.
 - 인덱스 연산자를 활용하여 `i`번째 값을 얻거나 바꿀수 있다.
-	```java
-	int mathSum = 0;
 
-	for (int i = 0; i < 5; i++)
-		mathSum += math[i];
-	```   
-	```java
-	for (int i = 0; i < 5; i++)
-		math[i] = 100;
-	```   
+```java
+int mathSum = 0;
+
+for (int i = 0; i < 5; i++)
+	mathSum += math[i];
+```   
+```java
+for (int i = 0; i < 5; i++)
+	math[i] = 100;
+```   
 
 
 
@@ -82,11 +83,13 @@
 
 ## 2. 객체 배열
 
-### 2.1 객체 배열의 정의
 
-- 배열의 요소가 객체인 배열
+- 배열의 요소가 객체인 배열로, 기본 자료형 배열과 사용법이 약간 다르다.
 - 기본 자료형 배열 요소에는 그 자료형에 해당하는 실제 값이 담기지만 객체 배열에는 생성된 인스턴스의 주소가 담긴다.
-- 객체 배열은 기본 자료형 배열과 사용법이 약간 다르다.
+	- 기본 자료형 배열
+<img src="https://resources.codeonweb.com/bucket/cached/72/d5/72d54e7bc14f44296675d610d8ead80d@2x.png" width="100%" height="100%">
+	- 객체 배열
+<img src="https://resources.codeonweb.com/bucket/cached/ca/cb/cacbe097dac93685cf7e25183b234643@2x.png" width="100%" height="100%">
 
 <br>
 
