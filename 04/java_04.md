@@ -206,41 +206,40 @@ for (int i = 0; i < 5; i++)
 	|`destPos`|복사해서 대상 배열에 붙여 넣기를 시작할 인덱스 위치|
 	|`length`|`src`에서 `dest`로 복사할 요소의 개수|
 
-<br>
-
 - 사용 예제
 
-	```java
-	package array;
+	- `ArrayTest.java`
+		```java
+		package array;
 
-	public class ArrayTest {
+		public class ArrayTest {
 
-		public static void main(String[] args) {
-			
-			int[]	math = {78, 46, 98, 22, 100};
-			int[]	english = {10, 20, 30, 40, 50};
-			
-			System.arraycopy(math, 1, english, 2, 2);
-			
-			for (int i = 0; i < math.length; i++) {
-				System.out.print(math[i] + " ");
-			}
-			
-			System.out.println();
-			
-			for (int i = 0; i < english.length; i++) {
-				System.out.print(english[i] + " ");
+			public static void main(String[] args) {
+				
+				int[]	math = {78, 46, 98, 22, 100};
+				int[]	english = {10, 20, 30, 40, 50};
+				
+				System.arraycopy(math, 1, english, 2, 2);
+				
+				for (int i = 0; i < math.length; i++) {
+					System.out.print(math[i] + " ");
+				}
+				
+				System.out.println();
+				
+				for (int i = 0; i < english.length; i++) {
+					System.out.print(english[i] + " ");
+				}
 			}
 		}
-	}
-	```   
+		```   
 
-- 출력 결과
+	- 출력 결과
 
-	```
-	78 46 98 22 100 
-	10 20 46 98 50 
-	```   
+		```
+		78 46 98 22 100 
+		10 20 46 98 50 
+		```   
 
 <br>
 
