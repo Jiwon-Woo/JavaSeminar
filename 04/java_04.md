@@ -1,9 +1,21 @@
-# 4회차
+# Java Semina 04
 
 ## 목차
-1. [배열](#1.-배열)
-2. [객체 배열](#2.-객체-배열)
-3. [배열의 복사](#3.-배열의-복사)
+1. [배열](#1.-배열)   
+	1.1 [배열의 생성](#1.1-배열의-생성)   
+	1.2 [배열의 선언 및 초기화](#1.2-배열의-선언-및-초기화)   
+	1.3 [배열의 사용](#1.3-배열의-사용)
+
+2. [객체 배열](#2.-객체-배열)   
+	2.1 [객체 배열의 사용](#2.1-객체-배열의-사용)   
+	2.2 [객체 배열 사용 예제](#2.2-객체-배열-사용-예제)
+
+3. [배열의 복사](#3.-배열의-복사)   
+	3.1 [System.arraycopy()](#3.1-System.arraycopy())   
+	3.2 [객체 배열의 복사](#3.2-객체-배열의-복사)   
+	3.3 [얕은 복사](#3.3-얕은-복사)   
+	3.4 [깊은 복사](#3.4-깊은-복사)
+
 4. [ArrayList](#4.-ArrayList)
 
 <br><br>
@@ -91,7 +103,7 @@ for (int i = 0; i < 5; i++)
 
 <br>
 
-### 2.1 객체 배열 사용하기
+### 2.1 객체 배열의 사용
 
 - `Student` 클래스
 
@@ -101,6 +113,8 @@ for (int i = 0; i < 5; i++)
 	public class Student {
 		
 		private	String	id;
+
+		public Student() {}
 		
 		public Student(String id) {
 			this.id = id;
@@ -401,7 +415,97 @@ for (int i = 0; i < 5; i++)
 - 배열요소 변경 전과 후
 
 	<img src="https://user-images.githubusercontent.com/74581396/122684520-c0d73000-d240-11eb-8202-a972c6bf67da.png" width="45%" height="45%">	<img src="https://user-images.githubusercontent.com/74581396/122684525-c46ab700-d240-11eb-9c10-0155a574d582.png" width="45%" height="45%">
+
+<br>
+
+### 3.4 깊은 복사
+
+- 만약 `src`와 `dest`의 배열요소가 서로 영향을 미치는 것을 막고 싶다면, 얕은 복사를 해서는 안된다.
+- 인스턴스의 메모리 주소가 아니라 인스턴스의 속성값을 복사하고 싶다면, `dest`의 배열 요소에도 객체를 생성하고, `for` 반복문을 사용하여 그 객체의 속성값에 `src`의 객체 속성값을 직접 대입해야한다.
+- 이렇게 요소의 값만 같게 복사하는 것을 깊은 복사라고 한다.
+- 깊은 복사 예제
+	- `ArrayTest.java`
+
+		```java
+		package array;
+
+		public class ArrayTest {
+
+			public static void main(String[] args) {
+				
+				Student[] cadet = new Student[5];
+				Student[] student = new Student[5];
+				
+				cadet[0] = new Student("gyeon");
+				cadet[1] = new Student("jwoo");
+				cadet[2] = new Student("seuhan");
+				cadet[3] = new Student("sjin");
+				cadet[4] = new Student("sushin");
+				
+				student[0] = new Student();
+				student[1] = new Student();
+				student[2] = new Student();
+				student[3] = new Student();
+				student[4] = new Student();
+				
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+				}
+				System.out.println();
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(student[i] + ", " + student[i].getStudentID());
+				}
+				
+				
+				for (int i = 0; i < student.length; i++) {
+					student[i].setStudentID(cadet[i].getStudentID());
+				}
+				
+				System.out.println();
+				
+
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(student[i] + ", " + student[i].getStudentID());
+				}
+				System.out.println();
+				
+				cadet[1].setStudentID("Woo Jiwon");
+				System.out.println(cadet[1] + ", " + cadet[1].getStudentID());
+				System.out.println(student[1] + ", " + student[1].getStudentID());
+			}
+		}
+		```   
 	
+	- 출력 결과
+
+		```
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, jwoo
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+
+		array.Student@1eb44e46, null
+		array.Student@6504e3b2, null
+		array.Student@515f550a, null
+		array.Student@626b2d4a, null
+		array.Student@5e91993f, null
+
+		array.Student@1eb44e46, gyeon
+		array.Student@6504e3b2, jwoo
+		array.Student@515f550a, seuhan
+		array.Student@626b2d4a, sjin
+		array.Student@5e91993f, sushin
+
+		array.Student@1ee0005, Woo Jiwon
+		array.Student@6504e3b2, jwoo
+		```   
+
+<br>
+
+- 배열요소 변경 전과 후
+
+	<img src="https://user-images.githubusercontent.com/74581396/122685329-989e0000-d245-11eb-8406-4cd9d6cf9a77.png" width="45%" height="45%">	<img src="https://user-images.githubusercontent.com/74581396/122685146-a606ba80-d244-11eb-8def-3b36bc6716d7.png" width="45%" height="45%">
 
 <br>
 
