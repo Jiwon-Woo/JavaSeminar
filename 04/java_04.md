@@ -248,71 +248,69 @@ for (int i = 0; i < 5; i++)
 
 - 기본 자료형 배열과 마찬가지로 객체 배열 또한 `System.arraycopy()` 메서드로 배열 요소를 복사할 수 있다.
 - 다만 객체 배열의 요소는 객체의 메모리 주소이므로, 기본 자료형 배열처럼 실제 자료값이 복사되는게 아니라 객체의 메로리 주소가 복사된다.
+- 객체 배열을 `System.arraycopy()` 메서드로 복사해보기
+	- `ArrayTest.java`
 
-<br>
+		```java
+		package array;
 
-- `ArrayTest.java`
+		public class ArrayTest {
 
-	```java
-	package array;
-
-	public class ArrayTest {
-
-		public static void main(String[] args) {
-			
-			Student[] cadet = new Student[5];
-			Student[] student = new Student[5];
-			
-			cadet[0] = new Student("gyeon");
-			cadet[1] = new Student("jwoo");
-			cadet[2] = new Student("seuhan");
-			cadet[3] = new Student("sjin");
-			cadet[4] = new Student("sushin");
-			
-			
-			for (int i = 0; i < cadet.length; i++) {
-				System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
-			}
-			for (int i = 0; i < student.length; i++) {
-				System.out.println(student[i]);
-			}
-			
-			System.out.println();
-			System.arraycopy(cadet, 0, student, 0, 5);
-			
-			for (int i = 0; i < cadet.length; i++) {
-				System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
-				System.out.println(student[i] + ", " + student[i].getStudentID());
+			public static void main(String[] args) {
+				
+				Student[] cadet = new Student[5];
+				Student[] student = new Student[5];
+				
+				cadet[0] = new Student("gyeon");
+				cadet[1] = new Student("jwoo");
+				cadet[2] = new Student("seuhan");
+				cadet[3] = new Student("sjin");
+				cadet[4] = new Student("sushin");
+				
+				
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+				}
+				for (int i = 0; i < student.length; i++) {
+					System.out.println(student[i]);
+				}
+				
+				System.out.println();
+				System.arraycopy(cadet, 0, student, 0, 5);
+				
+				for (int i = 0; i < cadet.length; i++) {
+					System.out.println(cadet[i] + ", " + cadet[i].getStudentID());
+					System.out.println(student[i] + ", " + student[i].getStudentID());
+				}
 			}
 		}
-	}
-	```   
+		```   
 
-- 출력 결과
+	- 출력 결과
 
-	```
-	array.Student@41975e01, gyeon
-	array.Student@1ee0005, jwoo
-	array.Student@75a1cd57, seuhan
-	array.Student@3d012ddd, sjin
-	array.Student@6f2b958e, sushin
-	null
-	null
-	null
-	null
-	null
+		```
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, jwoo
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+		null
+		null
+		null
+		null
+		null
 
-	array.Student@41975e01, gyeon
-	array.Student@41975e01, gyeon
-	array.Student@1ee0005, jwoo
-	array.Student@1ee0005, jwoo
-	array.Student@75a1cd57, seuhan
-	array.Student@75a1cd57, seuhan
-	array.Student@3d012ddd, sjin
-	array.Student@3d012ddd, sjin
-	array.Student@6f2b958e, sushin
-	array.Student@6f2b958e, sushin
-	```   
+		array.Student@41975e01, gyeon
+		array.Student@41975e01, gyeon
+		array.Student@1ee0005, jwoo
+		array.Student@1ee0005, jwoo
+		array.Student@75a1cd57, seuhan
+		array.Student@75a1cd57, seuhan
+		array.Student@3d012ddd, sjin
+		array.Student@3d012ddd, sjin
+		array.Student@6f2b958e, sushin
+		array.Student@6f2b958e, sushin
+		```   
 
 <br>
 
