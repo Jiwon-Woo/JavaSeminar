@@ -11,19 +11,18 @@
 
 ### 1. 배열
 
-<img src="https://player.slidesplayer.org/60/11187470/slides/slide_22.jpg" width="50%" height="50%">
+<img src="https://player.slidesplayer.org/60/11187470/slides/slide_22.jpg" width="50%" height="50%"><img src="https://player.slidesplayer.org/60/11187470/slides/slide_30.jpg" width="50%" height="50%">
 
 - 자료형이 같은 자료가 연속으로 나열된 자료구조.
 - 배열을 이루고 있는 자료들을 배열의 요소라고 한다.
 - 배열의 요소들은 실제 메모리 상에서도 이웃해있다. (물리적 위치와 논리적 위치가 같다.)
 - 즉, 배열의 `k`번째 요소라는 것은 `j`번째 인덱스로부터 실제 메모리 상에서 `|k - j| * 자료형의 크기(byte)` 만큼 떨어져 있다는 의미다.
 - `int`형인 `i` 배열을 예로 들자면, `i[2]`가 `i[1]`로부터 `4byte` 다음 메모리 주소에 위치하고 있는 것.
+- 자바의 배열은 클래스로 구현되어 있으므로, 배열 객체를 생성하여 이용할 수 있다.
 
 <br>
 
 #### 1.1 배열의 생성
-
-<img src="https://player.slidesplayer.org/60/11187470/slides/slide_30.jpg" width="50%" height="50%">
 
 - 배열은 하나의 클래스로, `new`를 활용하여 배열 객체를 생성할 수 있고, 배열 변수에 배열 인스턴스의 주소값이 담긴다.
 - 다른 클래스처럼 배열 객체 또한 배열 클래스 내에 있는 속성과 메서드를 활용할 수 있다.
