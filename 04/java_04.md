@@ -410,6 +410,8 @@ for (int i = 0; i < 5; i++)
 		array.Student@6f2b958e, sushin
 		```   
 
+<br>
+
 - 배열요소 변경 전과 후
 
 	<img src="https://user-images.githubusercontent.com/74581396/122684520-c0d73000-d240-11eb-8202-a972c6bf67da.png" width="45%" height="45%">	<img src="https://user-images.githubusercontent.com/74581396/122684525-c46ab700-d240-11eb-9c10-0155a574d582.png" width="45%" height="45%">
@@ -498,6 +500,8 @@ for (int i = 0; i < 5; i++)
 		array.Student@1ee0005, Woo Jiwon
 		array.Student@6504e3b2, jwoo
 		```   
+
+<br>
 
 - 배열요소 변경 전과 후
 
