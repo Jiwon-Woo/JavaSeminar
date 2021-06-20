@@ -17,7 +17,7 @@
 
 배열이란, 자료형이 같은 자료가 연속으로 나열된 자료구조입니다. 배열을 이루고 있는 자료들을 배열의 요소라고하며, 배열의 요소들은 실제 메모리 상에서도 이웃해있습니다.
 
-![array](https://user-images.githubusercontent.com/74581396/122672527-e5aeb180-d206-11eb-9e88-91d6075969b3.JPG)
+![array](https://player.slidesplayer.org/60/11187470/slides/slide_22.jpg)
 
 <br>
 
