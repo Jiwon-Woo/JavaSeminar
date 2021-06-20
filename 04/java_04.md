@@ -51,7 +51,7 @@
 
 	```java
 	int[]	math = new int[] {78, 46, 98, 22, 100};
-	int[]	english = {1, 2, 3, 4, 5};
+	int[]	english = {10, 20, 30, 40, 50};
 	```   
 
 	- 값을 넣어 초기화해줄 경우 `new int[]`의 대괄호에 자료형의 개수를 적으면 오류가 발생하므로 적지 말것.
@@ -183,7 +183,7 @@ for (int i = 0; i < 5; i++)
 ## 3. 배열의 복사
 
 - 배열의 복사에는 두가지 방법이 있다.
-- 첫번째는 `for` 반복문을 사용하여 각 배열의 요소값을 복사하는 방법이 있다.
+- 첫번째로 `for` 반복문을 사용하여 각 배열의 요소값을 복사하는 방법이 있다.
 - 두번째는 `System.arraycopy()` 메서드를 활용하는 것이다.
 
 <br>
@@ -206,8 +206,6 @@ for (int i = 0; i < 5; i++)
 	|`destPos`|복사해서 대상 배열에 붙여 넣기를 시작할 인덱스 위치|
 	|`length`|`src`에서 `dest`로 복사할 요소의 개수|
 
-<br>
-
 - 사용 예제 및 출력 결과
 
 	```java
@@ -218,36 +216,26 @@ for (int i = 0; i < 5; i++)
 		public static void main(String[] args) {
 			
 			int[]	math = {78, 46, 98, 22, 100};
-			int[]	english = {1, 2, 3, 4, 5};
-			
+			int[]	english = {10, 20, 30, 40, 50};
 			
 			System.arraycopy(math, 1, english, 2, 2);
 			
 			for (int i = 0; i < math.length; i++) {
-				System.out.println(math[i]);
+				System.out.print(math[i] + " ");
 			}
 			
 			System.out.println();
 			
 			for (int i = 0; i < english.length; i++) {
-				System.out.println(english[i]);
+				System.out.print(english[i] + " ");
 			}
 		}
 	}
 	```   
 
-	```java
-	78
-	46
-	98
-	22
-	100
-
-	1
-	2
-	46
-	98
-	5
+	```
+	78 46 98 22 100 
+	10 20 46 98 50 
 	```   
 
 <br>
