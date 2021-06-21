@@ -565,4 +565,62 @@ for (int i = 0; i < 5; i++)
 
 ### 4.3 ArrayList의 활용
 
+- `ArrayList` 사용 예제
+
+	```java
+	package array;
+	import java.util.ArrayList;
+
+	public class ArrayTest {
+
+		public static void main(String[] args) {
+			
+			ArrayList<Student> cadet = new ArrayList<Student>();
+			
+			System.out.println(cadet.isEmpty() + ", " + cadet.size());
+			System.out.println();
+			
+			cadet.add(new Student("gyeon"));
+			cadet.add(new Student("jwoo"));
+			cadet.add(new Student("seuhan"));
+			cadet.add(new Student("sjin"));
+			cadet.add(new Student("sushin"));
+			
+			System.out.println(cadet.isEmpty() + ", " + cadet.size());
+			
+			for (int i = 0; i < cadet.size(); i++) {
+				Student	student = cadet.get(i);
+				System.out.println(student + ", " + student.getStudentID());
+			}
+			
+			System.out.println();
+			cadet.remove(1);
+			System.out.println(cadet.isEmpty() + ", " + cadet.size());
+			
+			for (Student student : cadet) {
+				System.out.println(student + ", " + student.getStudentID());
+			}
+		}
+	}
+	```   
+
+- 출력결과
+
+	```
+	true, 0
+
+	false, 5
+	array.Student@7dc5e7b4, gyeon
+	array.Student@1ee0005, jwoo
+	array.Student@75a1cd57, seuhan
+	array.Student@3d012ddd, sjin
+	array.Student@6f2b958e, sushin
+
+	false, 4
+	array.Student@7dc5e7b4, gyeon
+	array.Student@75a1cd57, seuhan
+	array.Student@3d012ddd, sjin
+	array.Student@6f2b958e, sushin
+	```   
+
 <br>
