@@ -638,4 +638,30 @@ for (int i = 0; i < 5; i++)
 	array.Student@6f2b958e, sushin
 	```   
 
+	- `ArrayList`는 일반 배열과 달리 인덱스 연산자(`cadet[i]`)로 접근할 수 없다. 대신 `get(i)`을 사용하여 객체의 인스턴스에 접근 가능하다.
+	- `for (Student student : cadet)`는 `Student` 자료형 변수인 `student`에 `ArrayList`의 요소를 순서대로 넣는다는 의미이다.
+
+<br>
+
+- 아래의 `for` 반복문은 모두 같은 것을 출력해준다.
+
+	```java
+	for (int i = 0; i < cadet.size(); i++) {
+		System.out.println(cadet.get(i) + ", " + cadet.get(i).getStudentID());
+	}
+	```   
+
+	```java
+	for (int i = 0; i < cadet.size(); i++) {
+		Student	student = cadet.get(i);
+		System.out.println(student + ", " + student.getStudentID());
+	}
+	```   
+
+	```java
+	for (Student student : cadet) {
+		System.out.println(student + ", " + student.getStudentID());
+	}
+	```   
+
 <br>
