@@ -16,7 +16,10 @@
 	3.3 [얕은 복사](#3.3-얕은-복사)   
 	3.4 [깊은 복사](#3.4-깊은-복사)
 
-4. [ArrayList](#4.-ArrayList)
+4. [ArrayList](#4.-ArrayList)   
+	4.1 [ArrayList의 선언](#4.1-ArrayList의-선언)   
+	4.2 [ArrayList의 주요 메서드](#4.2-ArrayList의-주요-메서드)   
+	4.3 [ArrayList의 활용](#4.3-ArrayList의-활용)
 
 <br><br>
 
@@ -504,10 +507,56 @@ for (int i = 0; i < 5; i++)
 
 	<img src="https://user-images.githubusercontent.com/74581396/122685329-989e0000-d245-11eb-8406-4cd9d6cf9a77.png" width="45%" height="45%">	<img src="https://user-images.githubusercontent.com/74581396/122685146-a606ba80-d244-11eb-8def-3b36bc6716d7.png" width="45%" height="45%">
 
-<br>
-
+<br><br>
 
 ## 4. ArrayList
 
+- 앞에서 다룬 기본 배열은 길이를 정하고 시작해야하는데, 이 길이는 변경할 수 없기 때문에 이후에 길이를 수정하고 싶어도 그럴 수 없다.
+- 그리고 만약 배열의 요소를 제거하게 된다면, 그 부분은 앞으로 당겨지는 게 아니라 비워진 채로 존재하게 된다.
+- 자바에서는 `ArratList` 라는 객체 배열 클래스를 통해 이러한 단점을 극복할 수 있다.
+- `ArratList`는 `List`를 상속받은 여러 클래스 중 하나이다.
+
 <br>
 
+### 4.1 ArrayList의 선언
+
+- `ArrayList`의 기본 선언 형태
+
+	```
+	ArrayList<E> 배열 이름 = new ArrayList<E>();
+	```   
+
+	- `ArrayList` 클래스는 `java.util` 패키지에 구현되어 있는 클래스 이므로 `ArrayList`를 사용하기 위해서는 `java.util` 패키지를 `import` 해서 사용해야한다.
+	- `E`는 자료형을 의미하고, `<E>`와 같은 형태를 제네릭 자료형이라고 한다. `HashMap` 또한 제네릭 자료형의 한 종류이다.
+
+<br>
+
+- `ArrayList` 선언 예제
+
+	```java
+	import java.util.ArrayList;
+
+	ArrayList<Student> cadet = new ArrayList<Student>();
+	```   
+
+<br>
+
+### 4.2 ArrayList의 주요 메서드
+
+|메서드|설명|
+|:--|:--|
+|`boolean add(E e)`|요소 하나를 배열에 추가|
+|`int size()`|배열에 추가된 요소 전체 개수를 반환|
+|`E	get(int index)`|배열의 index 위치에 있는 요소 값을 반환|
+|`E	remove(int index)`|배열의 index 위치에 있는 요소 값을 제거하고 그 값을 반환|
+|`boolean isEmpty()`|배열이 비어 있는지 확인|
+
+- `E`는 요소의 자료형을, `e`는 요소의 변수명을 의미한다.
+- 배열의 요소를 추가할 때, 배열의 길이에 상관없이 추가 되며, 만약 길이가 부족하다면 배열의 길이가 더 늘어나도록 구현되어 있다.
+- 요소가 제거될 때도 마찬가지로, 어떤 인덱스의 요소가 제거되면 그 자리를 비워두지 않고 앞으로 하나씩 당기도록 구현되었다.
+
+<br>
+
+### 4.3 ArrayList의 활용
+
+<br>
