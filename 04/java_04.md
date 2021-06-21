@@ -17,7 +17,7 @@
 	3.4 [깊은 복사](#3.4-깊은-복사)
 
 4. [ArrayList](#4.-ArrayList)   
-	4.1 [ArrayList의 선언](#4.1-ArrayList의-선언)   
+	4.1 [ArrayList의 선언과 생성](#4.1-ArrayList의-선언과-생성)   
 	4.2 [ArrayList의 주요 메서드](#4.2-ArrayList의-주요-메서드)   
 	4.3 [ArrayList의 활용](#4.3-ArrayList의-활용)
 
@@ -518,7 +518,7 @@ for (int i = 0; i < 5; i++)
 
 <br>
 
-### 4.1 ArrayList의 선언
+### 4.1 ArrayList의 선언과 생성
 
 - `ArrayList`의 기본 선언 형태
 
@@ -531,13 +531,19 @@ for (int i = 0; i < 5; i++)
 
 <br>
 
-- `ArrayList` 선언 예제
+- `ArrayList`(위)과 일반 배열(아래)의 비교
 
 	```java
 	import java.util.ArrayList;
 
 	ArrayList<Student> cadet = new ArrayList<Student>();
 	```   
+
+	```java
+	Student[] cadet = new Student[5];
+	```   
+
+	`ArrayList`은 배열의 길이 설정으로부터 비교적 자유롭기 때문에 선언할 때 길이를 선언해줄 필요가 없다.
 
 <br>
 
