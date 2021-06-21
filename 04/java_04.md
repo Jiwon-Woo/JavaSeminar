@@ -551,11 +551,11 @@ for (int i = 0; i < 5; i++)
 
 |메서드|설명|
 |:--|:--|
-|`boolean add(E e)`|요소 하나를 배열에 추가|
+|`boolean add(E e)`|요소 하나를 배열에 추가하고 성공적으로 추가했다면 `true`, 아니라면 `false` 반환|
 |`int size()`|배열에 추가된 요소 전체 개수를 반환|
-|`E	get(int index)`|배열의 index 위치에 있는 요소 값을 반환|
-|`E	remove(int index)`|배열의 index 위치에 있는 요소 값을 제거하고 그 값을 반환|
-|`boolean isEmpty()`|배열이 비어 있는지 확인|
+|`E	get(int index)`|배열의 index 위치에 있는 요소 값(객체 배열의 경우 인스턴스의 주소값)을 반환|
+|`E	remove(int index)`|배열의 index 위치에 있는 요소 값(객체 배열의 경우 인스턴스의 주소값)을 제거하고 그 값을 반환|
+|`boolean isEmpty()`|배열이 비어 있는지 확인하고, 비어있다면 `true`, 비어있지 않다면 `false` 반환|
 
 - `E`는 요소의 자료형을, `e`는 요소의 변수명을 의미한다.
 - 배열의 요소를 추가할 때, 배열의 길이에 상관없이 추가 되며, 만약 길이가 부족하다면 배열의 길이가 더 늘어나도록 구현되어 있다.
@@ -580,22 +580,27 @@ for (int i = 0; i < 5; i++)
 			System.out.println(cadet.isEmpty() + ", " + cadet.size());
 			System.out.println();
 			
-			cadet.add(new Student("gyeon"));
-			cadet.add(new Student("jwoo"));
-			cadet.add(new Student("seuhan"));
-			cadet.add(new Student("sjin"));
-			cadet.add(new Student("sushin"));
+			System.out.println(cadet.add(new Student("gyeon")));
+			System.out.println(cadet.add(new Student("jwoo")));
+			System.out.println(cadet.add(new Student("seuhan")));
+			System.out.println(cadet.add(new Student("sjin")));
+			System.out.println(cadet.add(new Student("sushin")));
+			System.out.println();
 			
 			System.out.println(cadet.isEmpty() + ", " + cadet.size());
+			System.out.println();
 			
 			for (int i = 0; i < cadet.size(); i++) {
 				Student	student = cadet.get(i);
 				System.out.println(student + ", " + student.getStudentID());
 			}
-			
 			System.out.println();
-			cadet.remove(1);
+			
+			System.out.println(cadet.remove(1));
+			System.out.println();
+			
 			System.out.println(cadet.isEmpty() + ", " + cadet.size());
+			System.out.println();
 			
 			for (Student student : cadet) {
 				System.out.println(student + ", " + student.getStudentID());
@@ -609,14 +614,24 @@ for (int i = 0; i < 5; i++)
 	```
 	true, 0
 
+	true
+	true
+	true
+	true
+	true
+
 	false, 5
+
 	array.Student@7dc5e7b4, gyeon
 	array.Student@1ee0005, jwoo
 	array.Student@75a1cd57, seuhan
 	array.Student@3d012ddd, sjin
 	array.Student@6f2b958e, sushin
 
+	array.Student@1ee0005
+
 	false, 4
+
 	array.Student@7dc5e7b4, gyeon
 	array.Student@75a1cd57, seuhan
 	array.Student@3d012ddd, sjin
