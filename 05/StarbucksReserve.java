@@ -24,8 +24,7 @@ public class StarbucksReserve extends Starbucks {
 	}
 	
 	protected boolean isValidOrder(String coffeeBean, String coffeeMachine) {
-		if (coffeeBeanList.contains(coffeeBean) == false ||
-				coffeeMachineList.contains(coffeeMachine) == false) {
+		if (coffeeBeanList.contains(coffeeBean) == false || coffeeMachineList.contains(coffeeMachine) == false) {
 			if (coffeeBeanList.contains(coffeeBean) == false)
 				System.out.println("저희 매장에는 없는 커피 원두 입니다.");
 			if (coffeeMachineList.contains(coffeeMachine) == false)
