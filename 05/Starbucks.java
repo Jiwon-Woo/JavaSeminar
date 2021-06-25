@@ -1,6 +1,7 @@
 package practice5;
 
 public class Starbucks {
+
 	protected static int storeCount;
 	protected int	storeNumber;
 	protected int	orderNumber;

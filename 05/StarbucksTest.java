@@ -6,10 +6,13 @@ public class StarbucksTest {
 		
 		Starbucks starbucks = new Starbucks();
 		StarbucksReserve reserve = new StarbucksReserve();
+		Starbucks starbucks2 = new Starbucks();
 		
 		starbucks.showStarbucksInfo();
 		System.out.println();
 		reserve.showStarbucksInfo();
+		System.out.println();
+		starbucks2.showStarbucksInfo();
 		System.out.println();
 		
 		starbucks.makeCoffee();
@@ -23,10 +26,15 @@ public class StarbucksTest {
 		reserve.setBasicCoffeeMachine("Mastrena");
 		reserve.makeCoffee();
 		System.out.println();
+		starbucks2.makeCoffee();
+		System.out.println();
 		
 		starbucks.showStarbucksInfo();
 		System.out.println();
 		reserve.showStarbucksInfo();
 		System.out.println();
+		starbucks2.showStarbucksInfo();
+		System.out.println();
+		
 	}
 }

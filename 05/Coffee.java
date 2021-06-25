@@ -7,7 +7,8 @@ public class Coffee {
 	private String	coffeeMachine;
 	
 	public Coffee(Starbucks starbucks, String coffeeBean, String coffeeMachine) {
-		orderNumber = Integer.toString(starbucks.getStoreNumber()) + "-" + Integer.toString(starbucks.getOrderNumber());
+		orderNumber = Integer.toString(starbucks.getStoreNumber()) + "-"
+					+ Integer.toString(starbucks.getOrderNumber());
 		this.coffeeBean = coffeeBean;
 		this.coffeeMachine = coffeeMachine;
 	}

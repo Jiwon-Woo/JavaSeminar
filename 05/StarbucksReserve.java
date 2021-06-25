@@ -3,11 +3,15 @@ import java.util.ArrayList;
 
 public class StarbucksReserve extends Starbucks {
 	
+	private static int reserveStoreCount;
 	private ArrayList<String> coffeeBeanList = new ArrayList<String>();
 	private ArrayList<String> coffeeMachineList = new ArrayList<String>();
 	
 	public	StarbucksReserve () {
 		super("Ecuador Loja", "Clover");
+		storeCount--;
+		reserveStoreCount++;
+		storeNumber = reserveStoreCount;
 		coffeeMachineList.add("Clover");
 		coffeeMachineList.add("Black Eagle");
 		coffeeMachineList.add("Poc");
@@ -24,7 +28,8 @@ public class StarbucksReserve extends Starbucks {
 	}
 	
 	protected boolean isValidOrder(String coffeeBean, String coffeeMachine) {
-		if (coffeeBeanList.contains(coffeeBean) == false || coffeeMachineList.contains(coffeeMachine) == false) {
+		if (coffeeBeanList.contains(coffeeBean) == false ||
+				coffeeMachineList.contains(coffeeMachine) == false) {
 			if (coffeeBeanList.contains(coffeeBean) == false)
 				System.out.println("저희 매장에는 없는 커피 원두 입니다.");
 			if (coffeeMachineList.contains(coffeeMachine) == false)
