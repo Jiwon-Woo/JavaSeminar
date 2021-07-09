@@ -162,8 +162,6 @@ public class AnimalTest {
 
 ```   
 
-<br>
-
 > 출력결과
 
 ```
